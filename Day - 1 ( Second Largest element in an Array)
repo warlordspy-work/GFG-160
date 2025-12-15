@@ -1,0 +1,26 @@
+Given an array of positive integers arr[], return the second largest element from the array. If the second largest element doesn't exist then return -1.
+Using C++
+
+class Solution {
+  public:
+    // Function returns the second largest element
+    int getSecondLargest(vector<int> &arr) {
+        int largest = -1;
+        int secondLargest = -1;
+
+        for (int num : arr) {
+            // If we find a number greater than the current largest
+            if (num > largest) {
+                secondLargest = largest; // The previous largest becomes second
+                largest = num;           // Update new largest
+            }
+            // If we find a number greater than secondLargest 
+            // but strictly less than largest
+            else if (num > secondLargest && num != largest) {
+                secondLargest = num;
+            }
+        }
+        
+        return secondLargest;
+    }
+};
